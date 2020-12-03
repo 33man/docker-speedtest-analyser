@@ -22,9 +22,11 @@ def runSpeedtest():
         servers = []
         threads = None
 
+        speedtest.get_servers(servers=28045, exclude=args.exclude)
+        
         s = Speedtest()
         s.get_servers(servers)
-        s.get_best_server()
+        #s.get_best_server()
         s.download(threads=threads)
         s.upload(threads=threads, pre_allocate=False)
         result = s.results.dict()
